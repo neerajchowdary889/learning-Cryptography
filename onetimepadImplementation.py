@@ -1,8 +1,12 @@
 import string
 import random
+<<<<<<< HEAD
 import time
 ran = input("Enter Plaintext to Encrypt: ")
 start = time.time()
+=======
+ran = input("Enter Plaintext to Encrypt: ")
+>>>>>>> origin/master
 str1 = list(ran)
 i = 0
 ranKey = ''.join([random.choice(string.ascii_letters) for i in range(len(str1))])
@@ -31,7 +35,11 @@ def ciphertext():
 
 ciphertext()
 Ciphertext = ''.join(map(str, ListCiphertext))
+<<<<<<< HEAD
 print("Ciphertext is : \n"+Ciphertext)
+=======
+print("Ciphertext is : "+Ciphertext)
+>>>>>>> origin/master
 print("-----------------------------------> Encryption done")
 # -----------------------------------> Encryption done
 def Decryption():
@@ -43,11 +51,17 @@ def Decryption():
         temp2.append(chr(temp[z]))
     # print(temp2)
     Plaintext = ''.join(map(str, temp2))
+<<<<<<< HEAD
     print("Plaintext is : \n"+Plaintext)
 Decryption()
 print("-----------------------------------> Decryption done")
 end = time.time()
 print(end-start)
+=======
+    print("Plaintext is : "+Plaintext)
+Decryption()
+print("-----------------------------------> Decryption done")
+>>>>>>> origin/master
 # -----------------------------------> Decryption done
 #Remove comments to see the proper implementation,,, We can make changes even on this code
 
