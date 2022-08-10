@@ -1,10 +1,12 @@
 import math
 import random
 import string
-alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m',
-    'n','o','p','q','r','s','t','u','v','w','x','y','z']
+alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
+    ,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',' '
+    ,'1','2','3','4','5','6','7','8','9','0','~','`','!','@','#','$','%','^','&','*','(',')','-','_','+','=','\\'
+    ,'|','[',']','{','}','"',"'",';',':','/','?','.',',','>','<']
 message = input("Enter the message to encrypt: ")
-message = message.lower()
+# message = message.lower()
 inp = int(input("1) User input key\n2) random key\n>>> "))
 if inp == 1:
     key = input("Enter the Key for encryption: ")
@@ -43,7 +45,7 @@ class encryptclass():
         self.decrypttemp = []
     def encryption(self):
         for x in range(len(temp)):
-            self.temp.append((temp[x]+pseudokey.temp1[x])%26)
+            self.temp.append((temp[x]+pseudokey.temp1[x])%95)
         for x1 in range(len(self.temp)):
             self.encrypt.append(alphabets[self.temp[x1]])
         self.encrypt1 = ''.join(map(str,self.encrypt))
@@ -52,11 +54,11 @@ class decryptclass(encryptclass):
     def decryption(self):
         for y in range(len(self.temp)):
             self.decrypttemp.append(alphabets.index(self.encrypt[y]))
-            self.temp2.append((self.decrypttemp[y] - pseudokey.temp1[y]) % 26)
+            self.temp2.append((self.decrypttemp[y]-pseudokey.temp1[y])%95)
         for y1 in range(len(self.temp2)):
             self.decrypt.append(alphabets[self.temp2[y1]])
         self.decrypt = ''.join(map(str, self.decrypt))
-        print("Plaintext is : \n", self.decrypt)
+        print("Plaintext is : \n",self.decrypt)
 
 Vignerecipher = decryptclass()
 Vignerecipher.encryption()
@@ -66,5 +68,5 @@ if dec == 0:
 else:
     raise Exception("Use right key to decrypt...")
 
-""" Disadvantages of this algo which implemented by taking index from alphabetsis that if we encounter the space or any character except lowercase it cant encrypt 
-but this issue is solved in VignereCipherAllChar.py"""
+
+""" Here by this implementation we can encrypt every char including numbers, space, and even symbols too """

@@ -6,7 +6,12 @@ i = 0
 key = ''.join([random.choice(string.ascii_letters) for i in range(len(str))])
 Ciphertext = onetimepad.encrypt(str, key)
 print("Ciphertext is: \n"+Ciphertext)
-plaintext = onetimepad.decrypt(Ciphertext, key)
-print("Plaintext is: \n"+plaintext)
+dec = int(input("Press '0' to decrypt: "))
+if dec == 0:
+    plaintext = onetimepad.decrypt(Ciphertext, key)
+    print("Plaintext is: \n" + plaintext)
+else:
+    raise Exception("Use right key to decrypt...")
+
 
 

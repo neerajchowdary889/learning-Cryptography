@@ -1,8 +1,6 @@
 import string
 import random
-import time
 ran = input("Enter Plaintext to Encrypt: ")
-start = time.time()
 str1 = list(ran)
 i = 0
 ranKey = ''.join([random.choice(string.ascii_letters) for i in range(len(str1))])
@@ -44,10 +42,13 @@ def Decryption():
     # print(temp2)
     Plaintext = ''.join(map(str, temp2))
     print("Plaintext is : \n"+Plaintext)
-Decryption()
-print("-----------------------------------> Decryption done")
-end = time.time()
-print(end-start)
+
+dec = int(input("Press '0' to decrypt: "))
+if dec == 0:
+    Decryption()
+    print("-----------------------------------> Decryption done")
+else:
+    raise Exception("Use right key to decrypt...")
 # -----------------------------------> Decryption done
 #Remove comments to see the proper implementation,,, We can make changes even on this code
 

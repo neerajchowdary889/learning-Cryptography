@@ -1,7 +1,5 @@
-import time
 message = input("Enter the message to encrypt: ")
 shift = int(input("Enter int to shift: "))
-start = time.time()
 class encrypt():
     message = list(message)
     def __init__(self):
@@ -23,6 +21,8 @@ class decrypt(encrypt):
         print("Plaintext : \n",Plaintext)
 Decrypt = decrypt()
 Decrypt.encryption()
-Decrypt.decryption()
-end = time.time()
-print(end - start)
+dec = int(input("Press '0' to decrypt: "))
+if dec == 0:
+    Decrypt.decryption()
+else:
+    raise Exception("Use right key to decrypt...")
