@@ -11,8 +11,9 @@ def Keygeneration():
         key.append(random.randint(1,9))
         x1 = x1+1
 Keygeneration()
-a = int(key[0])
-b = int(key[1])
+a = int(2)
+b = int(7)
+print(a,b)
 temp = []
 for j in range(len(message)):
     temp.append(alphabets.index(message[j]))
@@ -23,9 +24,12 @@ class encrypt():
         self.temp = []
         self.Encrypt = []
     def Encryption(self):
+        encrypttemp = 0
         for i in range(len(message)):
-            self.temp.append((a*(temp[i])+b)%26)
+            encrypttemp = (a*temp[i]+b)%26
+            self.temp.append(encrypttemp)
             self.Encrypt.append(alphabets[self.temp[i]])
+            print('qq',encrypttemp)
         self.Encrypt = ''.join(map(str,self.Encrypt))
         print(self.Encrypt)
 def gcd(x, y):
@@ -39,20 +43,22 @@ def phi(n):
             result+=1
     return result
 n = a
-# print(phi(n))
+n = phi(n)
+print(n)
 class decrypt(encrypt):
     def Decryption(self):
         self.temp2 = []
         self.decrypt = []
         self.decrypt1 = []
         self.Encrypt = list(self.Encrypt)
+        print(self.Encrypt)
         j = 0
         for j in range(len(self.Encrypt)):
             self.temp2.append(alphabets.index(self.Encrypt[j]))
             print(self.temp2)
         print(self.temp2)
         for v in range(len(self.temp2)):
-            decryption = (((self.temp2[v]-b)*(phi(n)))%26)
+            decryption = (((self.temp2[v]-b)*(n))%26)
             self.decrypt.append(decryption)
             print(self.decrypt)
         for k in range(len(self.decrypt)):
@@ -62,3 +68,6 @@ class decrypt(encrypt):
 Encrypt = decrypt()
 Encrypt.Encryption()
 Encrypt.Decryption()
+
+""" Can't figure it out whats going wrong here according to my caluculation the values from encryption is on point but
+something going wrong, will figure it out soon. Suspending for days due to techinal issues"""
