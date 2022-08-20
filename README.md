@@ -5,19 +5,19 @@
 
 - Def: a cipher defined over K M C is pair of efficient algs (E, D) where 
   - Encryption(E) —> Key(K) \* Message(M) —>Cipher text (C).
-    - Decryption(D) —> Key(K) \* Cipher text(C) —> Message(M).
+  - Decryption(D) —> Key(K) \* Cipher text(C) —> Message(M).
 - E is often randomized because E generates random bits to encrypt the message and D is always deterministic because it need that particular thing to decrypt the encrypted part (because the output is same everytime no randomness)
 
 #### **Formalizing the privacy definition:**
 
 - An encryption process is secure if the ciphertext does not help to compute any function of the underlying plaintext.
   - This definition has its loop holes:
-    - how to formalize whether a given ciphertext helps to a compute a given function of the underlying plaintext?
-    - What is the underlying adversary/attack model?
+  - how to formalize whether a given ciphertext helps to a compute a given function of the underlying plaintext?
+  - What is the underlying adversary/attack model?
     - is adversary is passive or malicious? 
     - does the adversary have the access to any kind of additional information?
-        - Note 1: passive adversary - one how just watches the ciphertext and not change it
-        - Note 2: malicious adversary - one who changes the ciphertext and check the output in the reciever end and trying to make malicious.
+    - Note 1: passive adversary - one how just watches the ciphertext and not change it
+    - Note 2: malicious adversary - one who changes the ciphertext and check the output in the reciever end and trying to make malicious.
   - all encrypted messages do not remain indefinitely private
     - Example : The first word in an email is usually “hello”/”dear”, etc
 
@@ -35,8 +35,8 @@
 
 
 - Attacker has access to the ciphertext
-  - passive in nature
-    - here adversary only has ciphertext and he can only do functions based on the ciphertext
+- passive in nature
+- here adversary only has ciphertext and he can only do functions based on the ciphertext
 
 ### **Known plaintext attack:**
 
@@ -46,25 +46,25 @@
 - Attacker has access to several (plain-text, cipher-text) pairs under the same unknown key.
   - all encrypted messages do not remain indefinitely private
     - Example : The first word in an email is usually “hello”/”dear”, etc
-  - Goal is to compute some functions of the underlying plaintext in a new cipher text.
+- Goal is to compute some functions of the underlying plaintext in a new cipher text.
 
 ### **Chosen Plain-text Attack:**
 
 - In this attack, attacker may get the access to the encryption algorithm for some limited time so that in that time attacker send a plaintext to algo. so that he will get a ciphertext so next he will store this information in (Plaintext , Ciphertext) pair and do furthur computition.
-  - Here attacker get the temporary access to the encryption algorithm. (say temporary access instead of limited time)
+- Here attacker get the temporary access to the encryption algorithm. (say temporary access instead of limited time)
 
 ### **Chosen Ciphertext Attack:**
 
 - In this attack, attacker may get the access to the decryption algorithm for some limited time so that in that time attacker send a ciphertext to algo. so that he will get a plaintext so next he will store this information in (Ciphertext , Plaintext) pair and do furthur computition
-  - Here attacker get the temporary access to the decryption algorithm. (say temporary access instead of limited time)
+- Here attacker get the temporary access to the decryption algorithm. (say temporary access instead of limited time)
 
 ## **Perfect Security:**
 
 Shannon C. E
 
 - ***Informal Definition***: Irrespective of any ***prior info***. The attacker has about M, the Ciphertext C should leak ***no additional information*** about the plaintext.  k
-  - If the key is truly random, is at least as long as the plaintext, is never reused in whole or in part, and is kept completely secret, then the resulting[ciphertext ](https://www.sciencedirect.com/topics/computer-science/ciphertext)will be impossible to decrypt or break.
-    - Observing the cipher text C does not change the attackers knowledge about hte distributio of plaintext. even if adversary is computationally unbounded.
+- If the key is truly random, is at least as long as the plaintext, is never reused in whole or in part, and is kept completely secret, then the resulting ciphertext will be impossible to decrypt or break.
+- Observing the cipher text C does not change the attackers knowledge about hte distributio of plaintext. even if adversary is computationally unbounded.
 1. Interpretation: Probability of knowing a plaintext remains the same before and after seeing the ciphertext —> Perfect Security.
 1. Interpretation: Probability distribution of ciphertext is independent of plaintext.
 ![Aspose Words 241bfbc5-17e8-46b7-8db9-3755e281e6f0 003](https://user-images.githubusercontent.com/57310710/185761149-5e253cb5-e327-43e8-88fd-01d8295fc7fe.png)
@@ -73,16 +73,16 @@ Shannon C. E
 ## **Shift Cipher(Ceaser Cipher):**
 
 - This method is like shifting by certain order.
-  - like if i shift by 1, then A become B; B become C. If i shift by 2 then A become C; B become D like that.
+- like if i shift by 1, then A become B; B become C. If i shift by 2 then A become C; B become D like that.
 
-\1. An attacker can decrypt by brute force because key is in range from 0 to 25 because there is only 26 letters in alphabets. so he will try every possible key using brute force.
+1. An attacker can decrypt by brute force because key is in range from 0 to 25 because there is only 26 letters in alphabets. so he will try every possible key using brute force.
 
 ## **Mono-alphabetic Substitution Cipher:**
 
 - Map each plain-text character to an arbitrary cipher-text character in a one-to-one fashion.
-  - Like it maps one alphabet letter in plaintext to any random alphabet from A-Z in cyphertext.
-    - Example: If the plaintext contain ABCD then A can be mapped with V; B can be mapped with K; C can be mapped with P; D can be mapped with L. its not like shifting all alphabets like shift cipher, it will be mapped singly of each character.
-  - Here A is mapped with V, so every instance of A is mapped with V.
+- Like it maps one alphabet letter in plaintext to any random alphabet from A-Z in cyphertext.
+  - Example: If the plaintext contain ABCD then A can be mapped with V; B can be mapped with K; C can be mapped with P; D can be mapped with L. its not like shifting all alphabets like shift cipher, it will be mapped singly of each character.
+- Here A is mapped with V, so every instance of A is mapped with V.
 1. Brute force attack is not possible because the key range is 2^88 or 26!.
 1. Most frequently occuring character in ciphertext, corresponds to most frequently occuring character in plaintext. By using frequent letters adversary can perform the decryption. 
 
@@ -91,12 +91,12 @@ Shannon C. E
 (vernam 1917)
 
 - length of key is as long as length of message.
-  - The key is made up of random symbols.
+- The key is made up of random symbols.
 - Cipher text is created just by XOR of message and key.
-  - in addition the key is to be used to encrypt and decrypt a single message and then that key is decarded.
-    - Each new message requires a new key of the same length as the new message
+- in addition the key is to be used to encrypt and decrypt a single message and then that key is decarded.
+- Each new message requires a new key of the same length as the new message
 - C = E(K, M) = K (XOR) M
-  - M = D(K, C) = K (XOR) C
+- M = D(K, C) = K (XOR) C
 
 ![Aspose Words 241bfbc5-17e8-46b7-8db9-3755e281e6f0 004](https://user-images.githubusercontent.com/57310710/185761150-bdf8c161-90c8-4c75-aeee-06729e926f68.png)
 
@@ -104,10 +104,10 @@ Shannon C. E
 
 - In Affine cipher Encryption is E(x) = (a(x) + b) Mod 26
   - Here a and b are generated key pair. K = (a,b)
-    - x is message that user gave.
-      - a and b are randomly generated or can be given as a input in our code.
-  - In Affine cipher Decryption is x = a^-1(y - b) Mod 26
-    - a^-1 or a inverse is calculated by Eulerphi Function.
+  - x is message that user gave.
+  - a and b are randomly generated or can be given as a input in our code.
+- In Affine cipher Decryption is x = a^-1(y - b) Mod 26
+  - a^-1 or a inverse is calculated by Eulerphi Function.
 
 ### **Encryption in Affine cipher:**
 
@@ -119,7 +119,7 @@ Shannon C. E
 ![Aspose Words 241bfbc5-17e8-46b7-8db9-3755e281e6f0 005](https://user-images.githubusercontent.com/57310710/185761151-627f88cd-eaca-4b44-81fc-668d92059dfc.jpeg)
 
 ![Aspose Words 241bfbc5-17e8-46b7-8db9-3755e281e6f0 006](https://user-images.githubusercontent.com/57310710/185761152-10b35988-4433-4e8a-ac40-31fe980f4bed.png)
- **y = E(x)** 
+- **y = E(x)** 
 
 ### **Decryption in Affine cipher:**
 
@@ -132,8 +132,8 @@ Shannon C. E
 ## **Hill Cipher:**
 
 - Hill cipher is a polygraphic substitution cipher based on linear algebra.Each letter is represented by a number modulo 26.
-  - To encrypt a message, each block of n letters (considered as an n-component vector) is multiplied by an invertible n × n matrix, against modulus 26.
-    - The matrix used for encryption is the cipher key, and it should be chosen randomly from the set of invertible n × n matrices (modulo 26).
+- To encrypt a message, each block of n letters (considered as an n-component vector) is multiplied by an invertible n × n matrix, against modulus 26.
+- The matrix used for encryption is the cipher key, and it should be chosen randomly from the set of invertible n × n matrices (modulo 26).
 - To decrypt the message, each block is multiplied by the inverse of the matrix used for encryption.
 
 ### **Encryption of Hill Cipher:**
@@ -153,8 +153,8 @@ Shannon C. E
 ## **Vignere Cipher:**
 
 - Encryption in Vignere Cipher is E(Message) = ( Message + Key) Mod 26.
-  - Key is random or user input in our code.
-    - key is further converted to the pseudo random key (basically matching the length of Message).
+- Key is random or user input in our code.
+  - key is further converted to the pseudo random key (basically matching the length of Message).
 - Decryption of Vignere Cipher is  Message = (E(Message) - Key) Mod 26.
 
 ### **Encryption of Vignere Cipher:**
@@ -169,3 +169,7 @@ Shannon C. E
 1. Convert the Ciphertext into a list and then convert the each letter using indexing and store in list.
 1. Then do the Decryption Message = (E(Message) - Key) Mod 26. To get Plaintext.
 Learning Cryptography: 11
+
+
+[Learning_Cryptography.pdf](https://github.com/neerajchowdary889/learning-Cryptography/files/9387871/Learning_Cryptography.pdf)
+
