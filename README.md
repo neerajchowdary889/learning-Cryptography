@@ -1,2 +1,1 @@
-# learning-Cryptography
-Whatever cipher i learnt, trying to implement those ciphers in python.
+[Learning_Cryptography.pdf](https://github.com/neerajchowdary889/learning-Cryptography/files/9387797/Learning_Cryptography.pdf)
