@@ -11,10 +11,10 @@ Primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61,
 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787,
 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907,
 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997]
-alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m',
-    'n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E'
-    ,'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',' ']
-
+alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
+    ,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',' '
+    ,'1','2','3','4','5','6','7','8','9','0','~','`','!','@','#','$','%','^','&','*','(',')','-','_','+','=','\\'
+    ,'|','[',']','{','}','"',"'",';',':','/','?','.',',','>','<']
 def primenumber():
     p = sympy.randprime(2, 1000)
     q = sympy.randprime(2, 1000)
@@ -82,6 +82,5 @@ if dec == 0:
 else:
     raise Exception("Use right key to decrypt...")
 
-
 """This is RSA Cipher implementation, remove comments to see the clear view of the implementation i did.
-if you want to encrypt only lower and upper letters and this algo is much faster because no need of bigger calculations."""
+Present RSA Cipher encrypt all the symbols on keyboard but it take litle time because of bigger calculation"""
