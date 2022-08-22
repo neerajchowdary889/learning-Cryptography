@@ -13,15 +13,15 @@ Primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61,
 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997]
 alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m',
     'n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E'
-    ,'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    ,'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',' ']
 def primenumber():
     p = sympy.randprime(2, 1000)
     q = sympy.randprime(2, 1000)
     N = p * q
     return p, q, N
 p,q,N = primenumber()
-print(f"p,q is  {p},{q}")
-print(f"N is  {N}")
+# print(f"p,q is  {p},{q}")
+# print(f"N is  {N}")
 list = []
 phiN = (p-1)*(q-1)
 def coprime():
@@ -37,20 +37,48 @@ def coprime():
 coprime()
 e = list[0]
 N = list[1]
-print(f"Encryption key is ({e},{N})")
+#print(f"Encryption key is ({e},{N})")
 # ---------------------------------------------------------------------
 message = input("Type out Message to Encrypt: ")
 indexMessage = []
 for i in range(len(message)):
     indexMessage.append(alphabets.index(message[i]))
-print(indexMessage)
+# print(indexMessage)
 class Encryption():
     def __init__(self):
         self.Encrypt = []
     def Encrypty(self):
         for i in range(len(indexMessage)):
             self.Encrypt.append(((indexMessage[i])**(e))%N)
-        print(f"self.Encrypt: {self.Encrypt}")
-encrypt = Encryption()
-encrypt.Encrypty()
+        # print(f"self.Encrypt: {self.Encrypt}")
+# ---------------------------------------------------------------------
+def decrypt(D):
+    decryptemp = (D * e) % phiN
+    while (decryptemp != 1):
+        D = D + 1
+        decryptemp = (D * e) % phiN
+    list.append(D)
+decrypt(1)
+D = list[2]
+# print(f"D is {D}")
+# ---------------------------------------------------------------------
+class Decryption(Encryption):
+    def Decrypt(self):
+        self.Decryptt = []
+        self.DecryptTemp = []
+        for z in range(len(self.Encrypt)):
+            self.DecryptTemp.append(((self.Encrypt[z])**(D))%N)
+        # print(f"self.DecryptTemp: {self.DecryptTemp}")
+        for j in range(len(self.DecryptTemp)):
+            self.Decryptt.append(alphabets[self.DecryptTemp[j]])
+        self.Decryptt = ''.join(map(str,self.Decryptt))
+        print(self.Decryptt)
+Decrypty = Decryption()
+Decrypty.Encrypty()
+dec = int(input("Press '0' to decrypt: "))
+if dec == 0:
+    Decrypty.Decrypt()
+else:
+    raise Exception("Use right key to decrypt...")
 
+"""This is RSA Cipher implementation, remove comments to see the clear view of the implementation i did."""
