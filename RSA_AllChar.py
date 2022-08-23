@@ -39,7 +39,7 @@ coprime()
 e = list[0]
 N = list[1]
 #print(f"Encryption key is ({e},{N})")
-# ---------------------------------------------------------------------
+# ----------------------------------------------------------------------
 message = input("Type out Message to Encrypt: ")
 indexMessage = []
 for i in range(len(message)):
@@ -52,7 +52,7 @@ class Encryption():
         for i in range(len(indexMessage)):
             self.Encrypt.append(((indexMessage[i])**(e))%N)
         # print(f"self.Encrypt: {self.Encrypt}")
-# ---------------------------------------------------------------------
+# ----------------------------------------------------------------------
 def decrypt(D):
     decryptemp = (D * e) % phiN
     while (decryptemp != 1):
@@ -62,7 +62,7 @@ def decrypt(D):
 decrypt(1)
 D = list[2]
 # print(f"D is {D}")
-# ---------------------------------------------------------------------
+# ----------------------------------------------------------------------
 class Decryption(Encryption):
     def Decrypt(self):
         self.Decryptt = []
