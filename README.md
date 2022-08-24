@@ -170,6 +170,34 @@ Shannon C. E
 1. Then do the Decryption Message = (E(Message) - Key) Mod 26. To get Plaintext.
 Learning Cryptography: 11
 
+ RSA - (Rivest Shamir Adleman):
+------------------------------
 
+1.  We need to pick p and q; Both p and q should be prime numbers. it is picked without any calculations.
+
+2.  We need to compute N ; (p) *(q) = N.
+
+3.  Then compute φ(N); φ(N) is coprimes between the 1 and N. (by doing (p - 1)*(q - 1) to get φ(N)).
+
+4.  we need to choose e. By getting e we can continue to encrypt message. here is the twist, e is no chosen randomly.
+
+    1.  to pick e we have 2 rules. first is e should be greater than 1 and less than φ(N)
+    2.  second is e should be a Coprime with both N and φ(N).
+5.  we need to choose d. By getting d we can decrypt the encrypted message. we can find d by :
+
+    1.  d * e (Mod φ(N)) should equal to 1.
+    2.  d is chosen according to he condition we stated above.
+
+    ### RSA Encryption:
+
+    1.  Get the Encryption key pair which is (e, N).
+    2.  Do mathematical function ((Message)^e)(Mod N).
+    3.  Then we get the ciphertext. which is huge number or list of numbers based on Message.
+
+    ### RSA Decryption:
+
+    1.  Get the Decryption pair which is (d, N).
+    2.  Then compute, ((ciphertext)^d)(Mod N).
+    3.  Then we get the Message which we encrypted before.
 [Learning_Cryptography.pdf](https://github.com/neerajchowdary889/learning-Cryptography/files/9387871/Learning_Cryptography.pdf)
 
