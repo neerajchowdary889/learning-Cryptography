@@ -211,7 +211,7 @@ Diffie - Hellman key exchange:
 1.  First Alice and Bob has got their Private keys as example a and b respectively.
 2.  we got g and n as a public variable which was established in the public channel. hacker can see g and n. They are random Integers.
 3.  In Alice side ((g)^a)Mod n ; In Bob side ((g)^b)Mod n will be done simultaneously. lets be (g)^a)Mod n as (x) ; (g)^b)Mod n as (y).
-4.  Now both x and y got exchange through the public channel. If hacker see this he/she may could only see the some random bits not the key.
+4.  Now both x and y got exchange through the public channel. If hacker see this he/she could only see the some random bits not the key.
 5.  now in Alice side ((y)^a)Mod n , let it be as Sa; in Bob side ((x)^b)Mod n should be done, let it be as Sb. Now both Sa and Sb are same they are the public key which is used to encrypt and decrypt in symmetric cipher.
 6.  Sa will be (g^(a * b)) Mod n and Sb will be (g^(a * b)) Mod n. we can see that both Sa and Sb was same, so this is the key.
 
