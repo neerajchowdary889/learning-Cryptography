@@ -1,4 +1,3 @@
-import random
 alphabets=['a','b','c','d','e','f','g','h','i','j','k','l','m',
     'n','o','p','q','r','s','t','u','v','w','x','y','z']
 message = input("Enter the message to Encrypt: ")
@@ -69,5 +68,5 @@ Encrypt = decrypt()
 Encrypt.Encryption()
 Encrypt.Decryption()
 
-"""a values should be in certain range, in only that range this code works, dont know the issue. some calculation mistakes..."""
-"""NOT PERFECT...."""
+""" 'a' value should be in certain range, in only that range this code works, dont know the issue. some calculation mistakes..."""
+""" NOT PERFECT.... """
