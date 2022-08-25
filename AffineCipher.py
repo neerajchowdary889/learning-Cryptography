@@ -48,7 +48,6 @@ def modInverse(a, m):
             return x
     return -1
 n = modInverse(a,26)
-print(n)
 
 class decrypt(encrypt):
     def Decryption(self):
