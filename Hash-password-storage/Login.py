@@ -19,11 +19,11 @@ class NewUser():
         Password = Password+salt
         HashPassword = hashlib.sha256(Password.encode())
         HashPassword = HashPassword.hexdigest()
-        print(HashUsername,"\n", HashPassword)
         with open("Text.txt", "a") as f:
             f.write(f"Username : {Username}\n>>>Username : {HashUsername}\n>>>Password : {HashPassword}")
             f.write("\n")
             f.close()
+        print("Your Credentials added to the file...")
 class Login():
     def login(self):
         print("__Login__")
