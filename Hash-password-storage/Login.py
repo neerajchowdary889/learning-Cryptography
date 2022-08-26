@@ -3,9 +3,7 @@ import hashlib
 import linecache
 print("Welcome...")
 print("1. NewUser\n2. Login")
-inp = int(input("Type your input here: "))# if (inp == 1):
-#     Register = NewUser()
-#     Register.register()
+inp = int(input("Type your input here: "))
 salt = "Neeraj256"
 # """ SHA 256 """
 # def SHA256(Message):
@@ -13,7 +11,7 @@ salt = "Neeraj256"
 #     print(f"SHA256:\n{SHA256_hash.hexdigest()}")
 class NewUser():
     def register(self):
-        print("Hello...")
+        print("__NewUser__")
         Username = input("Type your Username: \n>>>")
         HashUsername = hashlib.sha256(Username.encode())
         HashUsername = HashUsername.hexdigest()
@@ -28,6 +26,7 @@ class NewUser():
             f.close()
 class Login():
     def login(self):
+        print("__Login__")
         Username = input("Type your Username: \n>>>")
         HashUsername = hashlib.sha256(Username.encode())
         HashUsername = HashUsername.hexdigest()
@@ -60,3 +59,7 @@ elif(inp == 2):
     L.login()
 else:
     raise("Incorrect Entry...........")
+
+"""-> We can make this little bit short and precise but i made a long code for clean text file purpose
+   -> We can add change password and stuff but i'm not adding because i made this just for understanding
+salt and Hasing, if you want to add some stuff just fork this and push i will see and pull to my code."""
