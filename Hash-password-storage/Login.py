@@ -5,10 +5,10 @@ print("Welcome...")
 print("1. NewUser\n2. Login")
 inp = int(input("Type your input here: "))
 salt = "Neeraj256"
-# """ SHA 256 """
-# def SHA256(Message):
-#     SHA_256 = hashlib.sha3_256(Message.encode())
-#     print(f"SHA256:\n{SHA256_hash.hexdigest()}")
+""" SHA 256 """
+def SHA256(Message):
+    SHA_256 = hashlib.sha3_256(Message.encode())
+    print(f"SHA256:\n{SHA256_hash.hexdigest()}")
 class NewUser():
     def register(self):
         print("__NewUser__")
