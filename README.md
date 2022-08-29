@@ -215,5 +215,4 @@ Diffie - Hellman key exchange:
 5.  now in Alice side ((y)^a)Mod n , let it be as Sa; in Bob side ((x)^b)Mod n should be done, let it be as Sb. Now both Sa and Sb are same they are the public key which is used to encrypt and decrypt in symmetric cipher.
 6.  Sa will be (g^(a * b)) Mod n and Sb will be (g^(a * b)) Mod n. we can see that both Sa and Sb was same, so this is the key.
 
-[Learning_Cryptography.pdf](https://github.com/neerajchowdary889/learning-Cryptography/files/9387871/Learning_Cryptography.pdf)
 
