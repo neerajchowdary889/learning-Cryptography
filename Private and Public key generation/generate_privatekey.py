@@ -42,7 +42,6 @@ def read_private_key(private_key, flag=True):
                 encryption_algorithm=serialization.NoEncryption()  # No encryption for private key
             ).decode('utf-8')
 
-            print("--> Private key",private_key)
             return private_key
     
         except Exception as e:
@@ -102,7 +101,7 @@ def write_keys(private_key, public_key, flag=False):
         try:
             with open('config.json', 'r') as file:
                 data = json.load(file)
-
+                
             data['Public-key'] = public_key
 
             with open('config.json', 'w') as file:
@@ -114,7 +113,7 @@ def write_keys(private_key, public_key, flag=False):
 
 
 if __name__ == '__main__':
-
+    print(create_public_key(load_private_key_from_json()))
     generation = int(input("1. Generate New Private and Public keys\n2. Generate New Public-key from existing Private-key\n3. Print Public-key\nEnter your choice: "))
 
     if generation == 1:
@@ -127,9 +126,8 @@ if __name__ == '__main__':
     elif generation == 2:
         print('Generating New Public-key...')
         private_key = load_private_key_from_json()
-        print(private_key)
         public_key = create_public_key(private_key)
-        status = write_keys(private_key, public_key)
+        status = write_keys(private_key, public_key, True)
         print_status(status)
 
     elif generation == 3:
