@@ -1,6 +1,9 @@
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+from cryptography.hazmat.primitives.serialization import Encoding, PrivateFormat, NoEncryption
+
 import json
 
 def create_private_key():
@@ -22,16 +25,40 @@ def clean_public_key(public_key):
     else:
         return public_key
 
-def read_private_key(private_key):
+def read_private_key(private_key, flag=True):
     # print out the private key
-    value = private_key.private_numbers()
-    return value.private_value
+    if flag:
+        try:
+            value = private_key.private_numbers()
+            return value.private_value
+        except Exception as e:
+            print(f'Error reading private key: {e}')
+            return False
+    else:
+        try:
+            private_key = private_key.private_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PrivateFormat.TraditionalOpenSSL,
+                encryption_algorithm=serialization.NoEncryption()  # No encryption for private key
+            ).decode('utf-8')
 
-def load_private_key():
+            print("--> Private key",private_key)
+            return private_key
+    
+        except Exception as e:
+            print(f'Error encoding private key: {e}')
+            return False
+
+def load_private_key_from_json():
     # load existing private key from the config file
     with open('config.json', 'r') as file:
         data = json.load(file)
-    private_key = data['Private-key']
+    private_key = data['Private-key'].encode('utf-8')
+    private_key = serialization.load_pem_private_key(
+    private_key,
+    password=None,  # No password since there's no encryption
+    backend=default_backend()
+    )   
     return private_key
 
 def get_public_key():
@@ -52,9 +79,7 @@ def write_keys(private_key, public_key, flag=False):
     # write the keys to the config.json file and return True if successful
 
     if flag:
-        private_key = read_private_key(private_key)
-        public_key = clean_public_key(public_key)
-        print(type(private_key))
+        private_key = read_private_key(private_key, False)
 
         try:
             with open('config.json', 'r') as file:
@@ -73,7 +98,6 @@ def write_keys(private_key, public_key, flag=False):
             return False
         
     else:
-        public_key = clean_public_key(public_key)
 
         try:
             with open('config.json', 'r') as file:
@@ -102,7 +126,7 @@ if __name__ == '__main__':
     
     elif generation == 2:
         print('Generating New Public-key...')
-        private_key = load_private_key()
+        private_key = load_private_key_from_json()
         print(private_key)
         public_key = create_public_key(private_key)
         status = write_keys(private_key, public_key)
@@ -111,7 +135,7 @@ if __name__ == '__main__':
     elif generation == 3:
         print('Printing Public-key...')
         public_key = get_public_key()
-        print(public_key)
+        print(clean_public_key(public_key))
 
     else:
         print("Exiting...")
