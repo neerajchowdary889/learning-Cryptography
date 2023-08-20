@@ -113,7 +113,7 @@ def write_keys(private_key, public_key, flag=False):
 
 
 if __name__ == '__main__':
-    print(create_public_key(load_private_key_from_json()))
+
     generation = int(input("1. Generate New Private and Public keys\n2. Generate New Public-key from existing Private-key\n3. Print Public-key\nEnter your choice: "))
 
     if generation == 1:
